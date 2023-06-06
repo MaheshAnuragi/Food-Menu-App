@@ -1,0 +1,42 @@
+
+{% extends 'food/base.html' %}
+
+{% block content %}
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class='alert alert-{{message.tags}}'>
+                    {{message}}
+                </div>
+            {% endfor %}
+        {% endif %}
+            
+        {% for item in item_list %}
+        <br>
+            <div class='row'>
+                <div class='col-md-3 offset-md-2'>
+                    <img class='card' width='200px' src="{{item.item_img}}" alt="">
+                </div>
+                <div class='col-md-4'>
+                    <h3>{{item.item_name}}</h3>
+                    <h3>{{item.item_desc}}</h3>
+                    <h3>${{item.item_price}}</h3>
+                    <h3>Added by : {{item.user_name}}</h3>
+                </div>
+                <div class='col-md-2'>
+                    <a href="{% url 'food:detail' item.id %}" class='btn btn-success'>Details</a>
+                </div>
+            </div>
+            
+        {% endfor %}
+    {% endblock  %}
+
+
+    {% comment %} <ul>
+        <li>
+            {% comment %} <a href="/{{ item.id }}">{{ item.item_name }}</a> {% endcomment %}
+            {% comment %} <a href="{% url 'food:detail' item.id %}">{{ item.item_name }}</a>    {% endcomment %}
+            {% comment %} from urls.py have name=detial which path have same as food/item.id so instead of adding a path
+            we can add simple url  {% endcomment %}
+        {% comment %} </li>
+    </ul> {% endcomment %} 

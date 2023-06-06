@@ -1,0 +1,43 @@
+{% extends 'food/base.html' %}
+
+{% block content %}
+    <div class='container'>
+        <div class='row justify-content-md-center'>
+            <div class='col-md-4 align-items-center'>
+                <div class='card'>
+                    <div class='class-header text-center text-white bg-info'>
+                        <div class='card-title'>
+                            Add an Item
+                        </div>
+                    </div>
+                    <div class='card-body'>
+                        <form method="POST">
+                            {% csrf_token %}
+                            {% for field in form %}
+                                <div class='form-group'>
+                                    {{field.name}}
+                                    <br>
+                                    {{field}}
+                                </div>
+                            {% endfor %}
+                            <button class='btn-info' type="submit">Save</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock  %}
+
+{% comment %} 
+
+
+{% extends 'food/base.html' %}
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        {{form}}
+        <button type="submit">Save</button>
+    </form>
+{% endblock  %} {% endcomment %}
